@@ -1,0 +1,10 @@
+.cus-snackbar{
+ display: flex;
+ align-items: center;
+}
+.mat-icon{
+ font-size: 2rem;
+ height: 2rem;
+ width: 2rem;
+ margin-right: .5rem;
+}

@@ -1,0 +1,114 @@
+<!-- Modal -->
+<div
+  class="modal fade shadow-2xl relative -top-32 ml-28 w-auto h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog relative w-auto pointer-events-none">
+    <div
+      class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <p
+          class="text-2xl text-black font-bold justify-center pl-44"
+          id="exampleModalLabel"
+        >
+          Create post
+        </p>
+        <button
+          type="button"
+          class="btn-close lg:inline-flex pl-3 pt-1 h-9 w-9 bg-gray-300 text-black text-xl rounded-full cursor-pointer opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:opacity-75 hover:no-underline"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="dialogService.showPostDialog = false"
+        >
+          X
+        </button>
+      </div>
+      <div
+        class="flex items-center space-x-2 py-3 pl-4 rounded-l-xl cursor-pointer"
+      >
+        <img
+          src="{{ profilePic }}"
+          alt="{{ fullName }}"
+          height="40px"
+          width="40px"
+          class="rounded-full cursor-pointer"
+        />
+        <p className="hidden sm:inline-flex font-medium">{{ fullName }}</p>
+      </div>
+
+      <form
+        class=""
+        [formGroup]="postFormData"
+        (ngSubmit)="postFormSubmitted()"
+      >
+        <!-- Post input field here -->
+        <div class="flex items-center space-x-2 py-3 pl-4 rounded-l-xl">
+          <input
+            class="h-12 flex-grow focus:outline-none font-medium px-4"
+            type="text"
+            id="caption"
+            formControlName="caption"
+            placeholder="What's on your mind, {{ fullName }}?"
+          />
+        </div>
+        <!-- post pic field -->
+
+        <div class="flex items-center justify-center p-4 w-full">
+          <label
+            for="postImage"
+            class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          >
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg
+                aria-hidden="true"
+                class="w-10 h-10 mb-3 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                ></path>
+              </svg>
+              <p class="text-lg text-black dark:text-gray-400">
+                <span class="font-semibold">Add photos/videos</span>
+              </p>
+              <!-- <p class="text-md text-gray-500 dark:text-gray-400">
+                or drag and drop
+              </p> -->
+            </div>
+            <input
+              id="postImage"
+              formControlName="postImage"
+              type="file"
+              accept="image/png, image/gif, image/jpeg, image/jpg"
+              class="hidden"
+              (change)="onPostImageFileChange($event)"
+            />
+          </label>
+        </div>
+        <!-- post button here -->
+        <div
+          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+        >
+          <button
+            type="submit"
+            class="px-6 py-2.5 w-full bg-blue-600 text-white font-medium text-xl leading-tight rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+          >
+            Post
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

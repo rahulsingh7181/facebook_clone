@@ -1,0 +1,87 @@
+<div
+  class="relative flex min-h-screen flex-col justify-center overflow-hidden bg__color py-10 mr-10"
+>
+  <div
+    class="relative bg-white px-6 pt-6 pb-6 shadow-xl mx-auto w-full max-w-lg rounded-xl -mt-24"
+  >
+    <div class="mx-auto flex w-full max-w-md flex-col space-y-5">
+      <div class="flex flex-col items-center justify-center text-center">
+        <div class="font-semibold text-3xl">
+          <p>Login to Social</p>
+        </div>
+      </div>
+
+      <div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmitted()">
+          <div class="flex flex-col">
+            <div class="mb-3 xl:w-96">
+              <input
+                type="email"
+                class="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border-2 border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-1"
+                id="username"
+                formControlName="username"
+                placeholder="Email address"
+              />
+              <div
+                class="text-sm text-red-500 mt-1"
+                *ngIf="Username.errors?.['required'] && (Username.touched || Username.dirty)"
+              >
+                Email address is required.
+              </div>
+              <div
+                class="text-sm text-red-500 mt-1"
+                *ngIf="Username.errors?.['email'] && (Username.touched || Username.dirty)"
+              >
+                Email address is invalid.
+              </div>
+            </div>
+            <div class="mb-3 xl:w-96">
+              <input
+                type="password"
+                class="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border-2 border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-1"
+                id="password"
+                formControlName="password"
+                placeholder="Password"
+              />
+              <div
+                class="text-sm text-red-500 mt-1"
+                *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)"
+              >
+                Password is required.
+              </div>
+            </div>
+            <div class="mb-3 xl:w-96">
+              <button
+                type="submit"
+                [disabled]="loginForm.invalid"
+                class="inline-block w-full px-3 py-3 bg-blue-600 text-white text-xl font-bold leading-tight rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+              >
+                Log in
+              </button>
+            </div>
+            <div class="mb-3 xl:w-96">
+              <div class="text-center text-blue-600 hover:underline">
+                <a href="#" class="">Forgotten password?</a>
+                <hr class="my-4 h-0.5 bg-gray-200 border-0 dark:bg-gray-700" />
+              </div>
+            </div>
+            <div class="mb-3 xl:w-96">
+              <div class="text-center">
+                <a routerLink="/signup" class="">
+                  <button
+                    type="button"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                    class="inline-block w-56 px-3 py-3 bg-green-500 text-white text-xl font-bold leading-tight rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-600 active:shadow-lg transition duration-150 ease-in-out"
+                  >
+                    Create New Account
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

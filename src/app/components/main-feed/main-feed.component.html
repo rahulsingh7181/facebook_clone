@@ -1,0 +1,10 @@
+<div class="flex-grow max-h-screen pt-6 mr-6 overflow-y-auto no-scrollbar">
+  <div class="mx-auto max-w-md md:max-w-xl lg:max-w-2xl">
+    <!-- Create Box -->
+    <app-create-post></app-create-post>
+    <!-- Posts  -->
+    <div *ngFor="let item of postItems">
+      <app-post [post]="item"></app-post>
+    </div>
+  </div>
+</div>
