@@ -37,7 +37,20 @@ export class FriendsComponent implements OnInit {
       receiverId: Number(this.loginService.getUserId()),
       senderId: userId,
     }
-    this.friendService.acceptFriendRequest(friend);
+    // this.friendService.acceptFriendRequest(friend);
+    this.friendService.acceptFriendRequest(friend).subscribe({ 
+      next: (res) => {
+        if(res != null){
+          console.log("Success ",res);
+          // this.Search.setValue('');
+        }
+      },
+      error: (err) => {
+        console.log("Error ",err.status);
+        console.log(err);
+      },
+      complete: () => {},
+    });
   }
 
 }

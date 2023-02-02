@@ -15,7 +15,12 @@ export class FriendService {
 
   // send friend request
   sendFriendRequest(friend: Friend){
-    return this.http.post<string>(this.baseUrl + '/add-friend', friend);
+    let formData = new FormData();
+    // formData.set("senderId", String(friend.senderId))
+    // formData.set("receiverId", String(friend.receiverId))
+    formData.append("senderId", String(friend.senderId));
+    formData.append("receiverId", String(friend.receiverId));
+    return this.http.post<string>(this.baseUrl + '/add-friend', formData);
   }
 
   // get All friend requests
@@ -26,6 +31,10 @@ export class FriendService {
   // accept friend request
   acceptFriendRequest(friend: Friend){
     console.log("acceptFriendRequest called", friend);
-    return;
+    let formData = new FormData();
+    formData.append("senderId", String(friend.senderId));
+    formData.append("receiverId", String(friend.receiverId));
+    console.log("formData :: ", JSON.stringify(formData));
+    return this.http.put<string>(this.baseUrl + '/acceptFriendRequest', formData);
   }
 }

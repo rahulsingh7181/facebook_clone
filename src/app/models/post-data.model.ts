@@ -1,4 +1,3 @@
-import { User } from "./user.model";
 
 export class PostData {
  id? : number = 0;
