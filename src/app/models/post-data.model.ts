@@ -1,6 +1,6 @@
 
 export class PostData {
  id? : number = 0;
- caption: string = '';
+ caption: string = null!;
  userId: number = 0;
 }

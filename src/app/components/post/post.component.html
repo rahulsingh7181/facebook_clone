@@ -10,7 +10,7 @@
       <div>
         <p class="font-medium">
           <!-- post name -->
-          Rahul Singh
+          {{ post.users.firstName }} {{ post.users.lastName }}
         </p>
         <p class="text-xs text-gray-500">
           <!-- post time -->
@@ -20,13 +20,13 @@
     </div>
     <p class="py-2">
       <!-- post caption -->
-      {{ post.postCaption }}
+      {{ post.caption }}
     </p>
   </div>
   <!-- post image -->
   <div *ngIf="post.postImage" class="relative h-40 md:h-72 bg-white">
     <img
-      src="{{ post.postImage }}"
+      src="data:image/jpeg;base64,{{ post.postImage }}"
       alt="post"
       class="object-fill h-72 w-screen"
     />
@@ -64,6 +64,7 @@
       <p class="text-xs sm:text-base">Like</p>
     </div>
     <div
+      (click)="showCommentSection()"
       class="flex items-center space-x-1 hover:bg-gray-100 flex-grow justify-center p-2 rounded-xl cursor-pointer"
     >
       <!-- <FaRegCommentAlt className="h-4" /> -->
@@ -104,6 +105,38 @@
       </svg>
 
       <p class="text-xs sm:text-base">Share</p>
+    </div>
+  </div>
+  <!-- comment section -->
+  <div
+    *ngIf="showCommentSectionVar"
+    id="comment_input"
+    class="bg-white rounded-md shadow-md text-gray-500 p-2 divide-y"
+  >
+    <div class="flex p-2 space-x-2 items-center">
+      <!-- profile image -->
+      <img
+        src="{{ profilePic }}"
+        alt="{{ fullName }}"
+        height="40px"
+        width="40px"
+        class="rounded-full cursor-pointer"
+        title="{{ fullName }}"
+      />
+      <form
+        class="flex flex-1"
+        [formGroup]="commentForm"
+        (ngSubmit)="addComment(post.postId, userId)"
+      >
+        <input
+          class="rounded-full h-12 flex-grow focus:outline-none font-medium bg-gray-100 px-4 hover:cursor-pointer"
+          type="text"
+          id="commentMessage"
+          formControlName="commentMessage"
+          placeholder="Write a comment..."
+        />
+        <button hidden>Submit</button>
+      </form>
     </div>
   </div>
 </div>

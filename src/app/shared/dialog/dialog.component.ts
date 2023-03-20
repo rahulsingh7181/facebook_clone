@@ -21,8 +21,9 @@ export class DialogComponent implements OnInit {
     ) { }
   profilePic: string = this.loginService.getUser().profilePic;
   fullName: string = "";
+  postUserId: number = 0;
 
-  postImage!: Blob;
+  postImage: Blob | undefined;
 
   ngOnInit(): void {
     if(this.profilePic == null){
@@ -31,7 +32,7 @@ export class DialogComponent implements OnInit {
 
     this.fullName = this.loginService.getUser().firstName + " " + this.loginService.getUser().lastName;
   }
-
+  
   public onPostImageFileChange(event:any){
     
     if(event.target.files[0].type == "image/png"
@@ -46,7 +47,7 @@ export class DialogComponent implements OnInit {
 
   // formGroup for post entity
   postFormData = new FormGroup({
-    caption: new FormControl(''),
+    caption: new FormControl(),
     postImage: new FormControl(''),
   });
 
@@ -56,14 +57,17 @@ export class DialogComponent implements OnInit {
       caption: this.Caption.value,
       userId: this.loginService.getUser().userId
     }
+    
     // submitting post into database
     this.createPostService.createPost(postData, this.postImage).subscribe({
       next: (res) => {
+        console.log("post data = ",res);
         this.dialogService.showPostDialog = false;
         this.cusSnackbarService.openCustomSnackBar("Your post have posted successfully !", 'Ok', 'success', 5000);
       },
       error: (err) => {
         this.dialogService.showPostDialog = false;
+        console.log(err)
         this.cusSnackbarService.openCustomSnackBar("Internal error !", 'Tray again!', 'error', 5000);
       },
       complete: () => {console.log("complete");},

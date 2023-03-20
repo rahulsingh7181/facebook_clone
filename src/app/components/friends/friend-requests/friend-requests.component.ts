@@ -4,11 +4,11 @@ import { FriendService } from 'src/app/services/friend.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-friends',
-  templateUrl: './friends.component.html',
-  styleUrls: ['./friends.component.css']
+  selector: 'app-friend-requests',
+  templateUrl: './friend-requests.component.html',
+  styleUrls: ['./friend-requests.component.css']
 })
-export class FriendsComponent implements OnInit {
+export class FriendRequestsComponent implements OnInit {
 
   constructor(private friendService: FriendService, private loginService: LoginService,) { }
 
@@ -16,7 +16,6 @@ export class FriendsComponent implements OnInit {
   profilePic: string = "../../../assets/default-avatar.png";
 
   ngOnInit(): void {
-
     /* getting all friend requests */
     this.friendService.getAllFriendRequests(Number(this.loginService.getUserId())).subscribe({
       next: (data:any) => {
@@ -63,5 +62,4 @@ export class FriendsComponent implements OnInit {
       complete: () => {},
     });
   }
-
 }

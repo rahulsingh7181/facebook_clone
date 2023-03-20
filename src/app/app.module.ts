@@ -32,6 +32,10 @@ import { WatchComponent } from './components/watch/watch.component';
 import { GroupsComponent } from './components/groups/groups.component';
 import { GamingComponent } from './components/gaming/gaming.component';
 import { FriendsSidebarComponent } from './components/friends-sidebar/friends-sidebar.component';
+import { FriendRequestsComponent } from './components/friends/friend-requests/friend-requests.component';
+import { SuggestionsComponent } from './components/friends/suggestions/suggestions.component';
+import { FriendlistComponent } from './components/friends/friendlist/friendlist.component';
+import { BirthdaysComponent } from './components/friends/birthdays/birthdays.component';
 
 
 
@@ -57,7 +61,11 @@ import { FriendsSidebarComponent } from './components/friends-sidebar/friends-si
     WatchComponent,
     GroupsComponent,
     GamingComponent,
-    FriendsSidebarComponent
+    FriendsSidebarComponent,
+    FriendRequestsComponent,
+    SuggestionsComponent,
+    FriendlistComponent,
+    BirthdaysComponent
   ],
   imports: [
     BrowserModule,

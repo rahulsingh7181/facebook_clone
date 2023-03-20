@@ -37,4 +37,9 @@ export class FriendService {
     console.log("formData :: ", JSON.stringify(formData));
     return this.http.put<string>(this.baseUrl + '/acceptFriendRequest', formData);
   }
+
+  // get All friend requests
+  getAllFriendsList(receiverId: number): Observable<CurrentUser>{
+    return this.http.get<CurrentUser>(`${this.baseUrl}/getAllFriends/${receiverId}`);
+  }
 }

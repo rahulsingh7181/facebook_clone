@@ -1,0 +1,57 @@
+<app-header></app-header>
+<section class="flex flex-1 overflow-hidden bg-gray-100">
+  <app-friends-sidebar></app-friends-sidebar>
+  <main class="flex flex-1 overflow-y-auto ml-96 px-8 py-5">
+    <div class="">
+      <div class="flex items-center">
+        <div class="text-xl font-bold">All Friends</div>
+        <!-- <div
+          class="p-2 text-blue-500 cursor-pointer hover:bg-gray-200 rounded-md"
+        >
+          See all
+        </div> -->
+      </div>
+      <div class="py-5 grid grid-cols-4 gap-4 overflow-hidden">
+        <!-- card 1 -->
+        <div
+          class="w-60 rounded-lg overflow-hidden shadow-md bg-white"
+          *ngFor="let userFriendRequest of userList"
+        >
+          <!-- Profile image -->
+          <div *ngIf="userFriendRequest.profilePic == null">
+            <img
+              src="{{ profilePic }}"
+              alt="{{ userFriendRequest.firstName }} {{
+                userFriendRequest.lastName
+              }}"
+              class="w-full"
+            />
+          </div>
+          <div *ngIf="userFriendRequest.profilePic != null">
+            <img
+              src="{{ userFriendRequest.profilePic }}"
+              alt="{{ userFriendRequest.firstName }} {{
+                userFriendRequest.lastName
+              }}"
+              class="w-full"
+            />
+          </div>
+          <!-- name -->
+          <div class="px-6 py-4">
+            <div class="font-semibold text-xl mb-2">
+              {{ userFriendRequest.firstName }} {{ userFriendRequest.lastName }}
+            </div>
+          </div>
+          <div class="px-6 pt-4 pb-2 flex-col">
+            <!-- confirm button -->
+            <button
+              class="bg-blue-500 w-full py-2 my-1 rounded-md text-lg font-semibold text-white"
+            >
+              View Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
